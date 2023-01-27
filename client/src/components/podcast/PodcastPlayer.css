@@ -1,0 +1,73 @@
+.PodcastPlayer {
+  margin: 0 auto 2rem 0;
+  border: black solid 2px;
+  padding-top: 10px;
+  color: lightgray;
+}
+
+.PodcastPlayer-title {
+  color: black;
+  padding: 10px 10px 0 10px;
+}
+
+.PodcastPlayer-title-date {
+  color: black;
+  padding: 0 10px 10px 10px;
+}
+
+.PodcastPlayer-subtitle {
+  color: black;
+  width: 100%;
+  text-align: left;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.PodcastPlayer-description {
+  color: black;
+  padding: 10px;
+  text-align: left;
+  font-size: 14pt;
+}
+
+.PodcastPlayer-download-link {
+  color: black;
+  transition: 0.15s;
+}
+
+.PodcastPlayer-download-link:hover {
+  color: var(--gold);
+  transition: 0.15s;
+}
+
+.rhap_container {
+  background-color: black;
+}
+
+.rhap_time {
+  color: var(--gold);
+}
+
+.rhap_progress-bar-show-download {
+  background-color: white;
+}
+
+.rhap_progress-filled {
+  background-color: var(--gold-variant);
+}
+
+.rhap_download-progress {
+  background-color: var(--gold);
+}
+
+.rhap_main-controls-button,
+.rhap_volume-button,
+.rhap_button-clear {
+  color: var(--gold);
+}
+
+.rhap_main-controls-button:hover,
+.rhap_volume-button:hover,
+.rhap_button-clear:hover {
+  color: var(--gold-variant);
+}

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import About from "../about/About";
 import Guide from "../guide/Guide";
 import Podcast from "../podcast/Podcast";
@@ -11,7 +10,6 @@ import logo from "../../assets/landing-logo.png";
 import "./Home.css";
 
 const Home = () => {
-  const navigate = useNavigate();
   const [background, setBackground] = useState(
     window.innerWidth >= 950 ? backgroundHorizontal : backgroundVertical
   );

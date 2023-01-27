@@ -1,0 +1,14 @@
+.SubscriptionLink {
+  width: 100%;
+  text-align: center;
+}
+
+.SubscriptionLink-link {
+  color: black;
+  transition: 0.15s;
+}
+
+.SubscriptionLink-link:hover {
+  color: var(--gold);
+  transition: 0.15s;
+}
