@@ -1,0 +1,16 @@
+.Container {
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: top;
+}
+
+.Container-overlay {
+  background-color: var(--green-transparent);
+  font-family: "Bitter", serif;
+  color: white;
+  height: 100%;
+  padding-top: 100px;
+  overflow-y: auto;
+}

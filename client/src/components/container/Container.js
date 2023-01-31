@@ -1,20 +1,20 @@
-import { useState } from "react";
+import NavBar from "../nav/NavBar";
 import About from "../about/About";
 import Guide from "../guide/Guide";
 import Podcast from "../podcast/Podcast";
-import Tab from "react-bootstrap/Tab";
-import Tabs from "react-bootstrap/Tabs";
+import Footer from "../footer/Footer";
+import { useRef, useState } from "react";
 import backgroundHorizontal from "../../assets/home-background-horizontal.jpg";
 import backgroundVertical from "../../assets/home-background-vertical.jpg";
-import logo from "../../assets/landing-logo.png";
-import "./Home.css";
-import NavBar from "../nav/NavBar";
+import "./Container.css";
 
-const Home = () => {
+const Container = ({ page }) => {
+  const topRef = useRef();
   const [background, setBackground] = useState(
     window.innerWidth >= 950 ? backgroundHorizontal : backgroundVertical
   );
   const [photoRight, setPhotoRight] = useState(window.innerWidth > 768);
+  const body = document.querySelector("#Container");
 
   window.addEventListener("resize", () => {
     if (window.innerWidth >= 768 && !photoRight) setPhotoRight(true);
@@ -32,32 +32,26 @@ const Home = () => {
       setBackground(backgroundVertical);
   });
 
+  let Content = About;
+  if (page === "guides") Content = Guide;
+  else if (page === "podcast") Content = Podcast;
+
+  const scrollToTop = () =>
+    topRef.current.scrollIntoView({ block: "end", behavior: "instant" });
+
   return (
-    <div className="Home" style={{ backgroundImage: `url(${background})` }}>
-      <NavBar />
-      <div className="Home-overlay">
-        <div className="Home-header">
-          <img className="Home-logo" src={logo} alt="growing-resilience-logo" />
-        </div>
-        <Tabs
-          defaultActiveKey="about-gr"
-          id="Home-tab-bar"
-          className="mb-0"
-          justify
-        >
-          <Tab eventKey="about-gr" title="About GR">
-            <About photoRight={photoRight} />
-          </Tab>
-          <Tab eventKey="guides" title="Guides">
-            <Guide />
-          </Tab>
-          <Tab eventKey="podcast" title="Podcast">
-            <Podcast />
-          </Tab>
-        </Tabs>
+    <div
+      className="Container"
+      style={{ backgroundImage: `url(${background})` }}
+    >
+      <NavBar scrollToTop={scrollToTop} />
+      <div id="Container" className="Container-overlay">
+        <div ref={topRef} />
+        <Content photoRight={photoRight} />
+        <Footer />
       </div>
     </div>
   );
 };
 
-export default Home;
+export default Container;

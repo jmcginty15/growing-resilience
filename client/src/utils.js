@@ -83,3 +83,28 @@ export const formatDate = (date) => {
 
   return `${day} ${month} ${date.getDate()}, ${date.getFullYear()}`;
 };
+
+export const paginateEpisodes = (episodes) => {
+  const paginatedEpisodes = [];
+  let nextPage = [];
+
+  let i = 0;
+  let j = 0;
+
+  while (i < episodes.length) {
+    nextPage.push(episodes[i]);
+
+    i++;
+    j++;
+
+    if (j === 5) {
+      paginatedEpisodes.push(nextPage);
+      nextPage = [];
+      j = 0;
+    }
+  }
+
+  if (nextPage.length) paginatedEpisodes.push(nextPage);
+
+  return paginatedEpisodes;
+};

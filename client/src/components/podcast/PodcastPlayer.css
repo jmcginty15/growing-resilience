@@ -1,6 +1,6 @@
 .PodcastPlayer {
   margin: 0 auto 2rem 0;
-  border: black solid 2px;
+  border: var(--green) solid 2px;
   padding-top: 10px;
   color: lightgray;
 }
@@ -41,7 +41,7 @@
 }
 
 .rhap_container {
-  background-color: black;
+  background-color: var(--green);
 }
 
 .rhap_time {

@@ -5,15 +5,17 @@ import "./Podcast.css";
 import SubscriptionLink from "./SubscriptionLink";
 import axios from "axios";
 import PodcastPlayer from "./PodcastPlayer";
+import { paginateEpisodes } from "../../utils";
+import PageNavigator from "./PageNavigator";
 
 const subscriptionLinks = [
   {
-    name: "Amazon",
+    name: "Amazon Music/Audible",
     link: "https://www.amazon.com/music/player/podcasts/5d711288-a91c-47e1-b265-89fb9f6eb8ef/growing-resilience",
     logo: null,
   },
   {
-    name: "Google",
+    name: "Google Podcasts",
     link: "https://podcasts.google.com/feed/aHR0cHM6Ly9mZWVkcy5saWJzeW4uY29tLzQxMTUwOS9yc3M",
     logo: null,
   },
@@ -33,7 +35,7 @@ const subscriptionLinks = [
     logo: null,
   },
   {
-    name: "Apple",
+    name: "Apple Podcasts",
     link: "https://podcasts.apple.com/us/podcast/growing-resilience/id1619817801",
     logo: null,
   },
@@ -59,23 +61,187 @@ const subscriptionLinks = [
   },
 ];
 
-const getEpisodes = async () => {
-  const res = await axios.get(`${BASE_URL}/podcast`);
-  return res.data;
+const mockEpisodes = [
+  {
+    date: "Thu, 26 Jan 2023 17:18:54 +0000",
+    description: "",
+    duration: "01:48:11",
+    keywords: ["gardening", "compost", "organic"],
+    subtitle: "",
+    title: "#10 Episode 10",
+    url: "https://episode10.com",
+  },
+  {
+    date: "Thu, 26 Jan 2023 17:18:54 +0000",
+    description: "",
+    duration: "01:48:11",
+    keywords: ["gardening", "compost", "organic"],
+    subtitle: "",
+    title: "#9 Episode 9",
+    url: "https://episode10.com",
+  },
+  {
+    date: "Thu, 26 Jan 2023 17:18:54 +0000",
+    description: "",
+    duration: "01:48:11",
+    keywords: ["gardening", "compost", "organic"],
+    subtitle: "",
+    title: "#8 Episode 8",
+    url: "https://episode10.com",
+  },
+  {
+    date: "Thu, 26 Jan 2023 17:18:54 +0000",
+    description: "",
+    duration: "01:48:11",
+    keywords: ["gardening", "compost", "organic"],
+    subtitle: "",
+    title: "#7 Episode 7",
+    url: "https://episode10.com",
+  },
+  {
+    date: "Thu, 26 Jan 2023 17:18:54 +0000",
+    description: "",
+    duration: "01:48:11",
+    keywords: ["gardening", "compost", "organic"],
+    subtitle: "",
+    title: "#6 Episode 6",
+    url: "https://episode10.com",
+  },
+  {
+    date: "Thu, 26 Jan 2023 17:18:54 +0000",
+    description: "",
+    duration: "01:48:11",
+    keywords: ["gardening", "compost", "organic"],
+    subtitle: "",
+    title: "#5 Episode 5",
+    url: "https://episode10.com",
+  },
+  {
+    date: "Thu, 26 Jan 2023 17:18:54 +0000",
+    description: "",
+    duration: "01:48:11",
+    keywords: ["gardening", "compost", "organic"],
+    subtitle: "",
+    title: "#4 Episode 4",
+    url: "https://episode10.com",
+  },
+  {
+    date: "Thu, 26 Jan 2023 17:18:54 +0000",
+    description: "",
+    duration: "01:48:11",
+    keywords: ["gardening", "compost", "organic"],
+    subtitle: "",
+    title: "#3 Episode 3",
+    url: "https://episode10.com",
+  },
+  {
+    date: "Thu, 26 Jan 2023 17:18:54 +0000",
+    description: "",
+    duration: "01:48:11",
+    keywords: ["gardening", "compost", "organic"],
+    subtitle: "",
+    title: "#2 Episode 2",
+    url: "https://episode10.com",
+  },
+  {
+    date: "Thu, 26 Jan 2023 17:18:54 +0000",
+    description: "",
+    duration: "01:48:11",
+    keywords: ["gardening", "compost", "organic"],
+    subtitle: "",
+    title: "#1 Episode 1",
+    url: "https://episode10.com",
+  },
+];
+
+const getEpisodes = async (searchTerms = null) => {
+  // let url = `${BASE_URL}/episodes`;
+  // if (searchTerms) {
+  //   const terms = searchTerms.split(" ");
+  //   searchTerms = [];
+  //   for (let term of terms) if (term !== "") searchTerms.push(term);
+  //   url += `?searchTerms=${encodeURIComponent(searchTerms.join(" "))}`;
+  // }
+  // const res = await axios.get(url);
+  // return res.data;
+
+  return mockEpisodes;
 };
 
 const Podcast = () => {
   const [episodes, setEpisodes] = useState(null);
-  const [searchTerms, setSearchTerms] = useState(null);
+  const [paginatedEpisodes, setPaginatedEpisodes] = useState(null);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [searchTerms, setSearchTerms] = useState("");
+  const [searching, setSearching] = useState(false);
+  const handleChange = (evt) => setSearchTerms(evt.target.value);
+
+  console.log(episodes);
 
   useEffect(() => {
-    getEpisodes().then((data) => setEpisodes(data));
-  }, [searchTerms]);
+    getEpisodes().then((data) => {
+      setEpisodes(data);
+      resetPaginatedEpisodes(data);
+    });
+  }, []);
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    if (searchTerms) {
+      setSearching(true);
+      getEpisodes(searchTerms).then((data) => {
+        setSearching(false);
+        setEpisodes(data);
+        resetPaginatedEpisodes(data);
+      });
+    }
+  };
+
+  const handleClear = () => {
+    if (searchTerms) {
+      setSearching(true);
+      getEpisodes().then((data) => {
+        setSearching(false);
+        setEpisodes(data);
+        resetPaginatedEpisodes(data);
+      });
+      setSearchTerms("");
+    }
+  };
+
+  const resetPaginatedEpisodes = (episodes) => {
+    setPaginatedEpisodes(paginateEpisodes(episodes));
+    setCurrentPage(0);
+  };
+
+  const nextPage = () => setCurrentPage(currentPage + 1);
+  const prevPage = () => setCurrentPage(currentPage - 1);
+  const firstPage = () => setCurrentPage(0);
+  const lastPage = () => setCurrentPage(paginatedEpisodes.length - 1);
+
+  const handleNavClick = (buttonId) => {
+    switch (buttonId) {
+      case "first":
+        firstPage();
+        break;
+      case "prev":
+        prevPage();
+        break;
+      case "next":
+        nextPage();
+        break;
+      case "last":
+        lastPage();
+        break;
+    }
+  };
 
   return (
     <div className="Podcast">
       <div className="Podcast-header">
-        <h3>Subscribe to the Growing Resilience Podcast:</h3>
+        <h3 className="Podcast-title">
+          Subscribe to the Growing Resilience Podcast:
+        </h3>
         <div className="Podcast-header-content">
           {subscriptionLinks.map((link) => (
             <SubscriptionLink
@@ -87,14 +253,77 @@ const Podcast = () => {
           ))}
         </div>
       </div>
-      <div className="Podcast-content">
-        <div className="Podcast-content-episodes">
-          {episodes &&
-            episodes.map((episode) => (
-              <PodcastPlayer key={episode.title} podcast={episode} />
-            ))}
+      <div className="Podcast-content-main">
+        <div className="Podcast-content">
+          <div className="Podcast-content-episodes">
+            <form className="Podcast-search-form" onSubmit={handleSubmit}>
+              <input
+                className="Podcast-search-input"
+                type="text"
+                placeholder="Search by episode title, description, or tags"
+                autoComplete="off"
+                onChange={handleChange}
+                value={searchTerms}
+              />
+              {searching ? (
+                <div className="Podcast-search-indicator">Searching...</div>
+              ) : (
+                <div className="Podcast-search-button-container">
+                  <button className="Podcast-search-button" type="submit">
+                    Search
+                  </button>
+                  <button
+                    className="Podcast-search-button"
+                    type="button"
+                    onClick={handleClear}
+                  >
+                    Clear
+                  </button>
+                </div>
+              )}
+            </form>
+            {episodes && (
+              <div>
+                {episodes.length ? (
+                  <div>
+                    {paginatedEpisodes.length === 1 ? (
+                      <div>
+                        {episodes.map((episode) => (
+                          <PodcastPlayer
+                            key={episode.title}
+                            podcast={episode}
+                          />
+                        ))}
+                      </div>
+                    ) : (
+                      <div>
+                        <PageNavigator
+                          currentPage={currentPage}
+                          handleNavClick={handleNavClick}
+                          maxPage={paginatedEpisodes.length - 1}
+                        />
+                        {paginatedEpisodes[currentPage].map((episode) => (
+                          <PodcastPlayer
+                            key={episode.title}
+                            podcast={episode}
+                          />
+                        ))}
+                        <PageNavigator
+                          currentPage={currentPage}
+                          handleNavClick={handleNavClick}
+                          maxPage={paginatedEpisodes.length - 1}
+                        />
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <div className="Podcast-no-episodes">No episodes found</div>
+                )}
+              </div>
+            )}
+          </div>
+          <img className="Podcast-photo" src={logo} alt="peppers" />
         </div>
-        <img className="Podcast-photo" src={logo} alt="peppers" />
       </div>
     </div>
   );

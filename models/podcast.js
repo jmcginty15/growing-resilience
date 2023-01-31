@@ -78,21 +78,23 @@ class Podcast {
 
     const filteredEpisodes = [];
     if (searchTerms) {
-      searchTerms = searchTerms.split("+");
+      searchTerms = decodeURIComponent(searchTerms).split(" ");
 
-      for (let episode of episodes)
+      for (let episode of episodes) {
+        const title = episode.title.toLowerCase();
+        const description = episode.title.toLowerCase();
+
         for (let term of searchTerms) {
-          if (
-            episode.title.indexOf(term) !== -1 ||
-            episode.description.indexOf(term) !== -1
-          ) {
+          term = term.toLowerCase();
+
+          if (title.indexOf(term) !== -1 || description.indexOf(term) !== -1) {
             filteredEpisodes.push(episode);
             break;
           }
 
           let matched = false;
           for (let keyword of episode.keywords)
-            if (keyword.indexOf(term) !== -1) {
+            if (keyword.toLowerCase().indexOf(term) !== -1) {
               filteredEpisodes.push(episode);
               matched = true;
               break;
@@ -100,6 +102,7 @@ class Podcast {
 
           if (matched) break;
         }
+      }
     }
 
     return searchTerms ? filteredEpisodes : episodes;

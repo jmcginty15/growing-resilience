@@ -4,7 +4,7 @@ import { TransitionGroup, CSSTransition } from "react-transition-group";
 import Landing from "./components/landing/Landing";
 // import NavBar from './components/nav/NavBar';
 import Home from "./components/home/Home";
-// import About from './components/about/About';
+import Container from "./components/container/Container";
 // import Staff from './components/about/Staff';
 // import GetStarted from './components/getStarted/GetStarted';
 // import Services from './components/services/Services';
@@ -31,7 +31,9 @@ function App() {
         > */}
       <Routes>
         <Route exact path="/" element={<Landing />} />
-        <Route exact path="/home" element={<Home />} />
+        <Route exact path="/about" element={<Container page="about" />} />
+        <Route exact path="/guides" element={<Container page="guides" />} />
+        <Route exact path="/podcast" element={<Container page="podcast" />} />
         {/* <Route path={"*"} element={<Navigate to="/" />} /> */}
       </Routes>
       {/* </CSSTransition>

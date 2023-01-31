@@ -1,10 +1,20 @@
 .About {
+  margin: 5%;
+}
+
+.About-content {
   background-color: rgba(255, 255, 255, 0.75);
   color: black;
   text-align: justify;
-  padding: 5%;
+  padding: 3rem;
   font-size: 18pt;
   line-height: 1.5;
+}
+
+.About-title {
+  font-size: 42pt;
+  text-align: left;
+  margin: 3rem 0;
 }
 
 .About ul {
@@ -31,4 +41,39 @@
   .About {
     font-size: 12pt;
   }
+}
+
+.About-divider {
+  width: 100%;
+  height: 2px;
+  background-color: black;
+  margin: 3rem 0;
+}
+
+.About-bio-container {
+  display: grid;
+  grid-template-columns: 30% 70%;
+}
+
+.About-bio-photo {
+  margin: 0 !important;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: center;
+  margin-top: 20px;
+}
+
+.About-bio-text {
+  margin: 0 2rem;
+}
+
+.About-link {
+  color: black;
+  transition: 0.15s;
+}
+
+.About-link:hover {
+  color: var(--gold);
+  transition: 0.15s;
 }

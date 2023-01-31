@@ -1,0 +1,46 @@
+.PageNavigator {
+  display: grid;
+  grid-template-columns: 10% 10% 60% 10% 10%;
+  margin: 0 auto 1rem 0;
+  font-size: 12pt;
+  width: 100%;
+}
+
+.PageNavigator-container {
+  width: 100%;
+}
+
+.PageNavigator-link {
+  text-decoration: underline;
+  transition: 0.15s;
+}
+
+.PageNavigator-link:hover {
+  cursor: pointer;
+  color: var(--gold);
+  transition: 0.15s;
+}
+
+.PageNavigator-disabled {
+  color: grey;
+  text-decoration: none;
+}
+
+.PageNavigator-disabled:hover {
+  color: grey;
+  cursor: text;
+}
+
+.PageNavigator-first,
+.PageNavigator-prev {
+  text-align: left;
+}
+
+.PageNavigator-last,
+.PageNavigator-next {
+  text-align: right;
+}
+
+.PageNavigator-middle {
+  text-align: center;
+}

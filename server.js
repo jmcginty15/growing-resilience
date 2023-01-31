@@ -7,7 +7,7 @@ const podcastRoutes = require("./routes/podcastRoutes");
 
 app.use(cors({ origin: "*" }));
 
-const CLIENT_ROUTES = ["/", "/home"];
+const CLIENT_ROUTES = ["/", "/about", "/guides", "/podcast"];
 app.use((req, res, next) => {
   if (CLIENT_ROUTES.includes(req.path)) {
     res.header("Cache-Control", "private, no-cache, no-store, must-revalidate");
@@ -21,7 +21,7 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "./client/build")));
-app.use("/podcast", podcastRoutes);
+app.use("/episodes", podcastRoutes);
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {

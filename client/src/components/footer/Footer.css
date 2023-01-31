@@ -1,0 +1,87 @@
+.Footer {
+  font-family: "Bitter", serif;
+  width: 100%;
+  text-align: left;
+  background-color: var(--green);
+  color: white;
+  font-weight: 500;
+  border-top: solid var(--accent) 2px;
+  box-shadow: 0 2px 10px black;
+}
+
+.Footer-container {
+  display: grid;
+}
+
+@media (min-width: 768px) {
+  .Footer {
+    padding: 50px;
+  }
+
+  .Footer-container {
+    grid-template-columns: 50% 50%;
+  }
+
+  .Footer-right {
+    text-align: right;
+  }
+}
+
+@media (max-width: 768px) {
+  .Footer {
+    padding: 15px;
+  }
+
+  .Footer-container {
+    grid-template-columns: 100%;
+    row-gap: 20px;
+  }
+
+  .Footer-right {
+    text-align: center;
+  }
+}
+
+.Footer-link {
+  color: white;
+  border-radius: 5px;
+  transition: 0.15s;
+}
+
+.Footer-link:hover {
+  color: var(--gold);
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+.Footer-svg {
+  fill: white;
+  color: white;
+  transition: 0.15s;
+}
+
+.Footer-svg:hover {
+  cursor: pointer;
+  fill: var(--gold);
+  transition: 0.15s;
+}
+
+.Footer-tag {
+  margin-top: 40px;
+}
+
+.Footer-link-social {
+  margin: 0;
+  font-size: x-large;
+  position: relative;
+}
+
+.Footer-link-social:hover {
+  cursor: pointer;
+  color: var(--accent-variant) !important;
+  transition: 0.15s;
+}
+
+.Footer-email {
+  word-wrap: break-word;
+}
