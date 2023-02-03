@@ -1,12 +1,16 @@
 import { useNavigate } from "react-router";
+import { useLocation } from "react-router-dom";
+import { GR_EMAIL } from "../../config";
 import "./Footer.css";
 
-const Footer = () => {
+const Footer = ({ scrollToTop }) => {
+  const location = useLocation();
   const navigate = useNavigate();
-  const facebook =
-    "https://www.facebook.com/dpttherapy/about/?ref=page_internal";
-  const linkedIn = "https://www.linkedin.com/in/darin-deaton-5545581a/";
-  const instagram = "https://www.instagram.com/";
+
+  const goTo = (route, toContact = false, fromAbout = false) => {
+    navigate(route, false);
+    scrollToTop(toContact, fromAbout, true);
+  };
 
   return (
     <div className="Footer">
@@ -18,7 +22,7 @@ const Footer = () => {
             </a>{" "}
             |{" "}
             <a className="Footer-link" onClick={() => navigate("/about")}>
-              About GR
+              About GRP
             </a>{" "}
             |{" "}
             <a className="Footer-link" onClick={() => navigate("/guides")}>
@@ -28,26 +32,15 @@ const Footer = () => {
             <a className="Footer-link" onClick={() => navigate("/podcast")}>
               Podcast
             </a>{" "}
-          </p>
-          <p>
-            Follow DPT on social media:&emsp;
+            |{" "}
             <a
-              className="Footer-svg Footer-link-social"
-              href={facebook}
-              target="_blank"
-              rel="noreferrer"
+              className="Footer-link"
+              onClick={() =>
+                goTo("/about", true, location.pathname === "/about")
+              }
             >
-              <i className="fa fa-facebook-square" />
-            </a>
-            &emsp;
-            <a
-              className="Footer-svg Footer-link-social"
-              href={linkedIn}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <i className="fa fa-linkedin-square" />
-            </a>
+              Contact
+            </a>{" "}
           </p>
           <p>
             <i className="fa fa-copyright" /> Copyright 2023 Growing Resilience
@@ -58,18 +51,9 @@ const Footer = () => {
           <h5>
             Growing Resilience Permaculture <small>LLC</small>
           </h5>
-          Your
+          Eastern Washington
           <br />
-          Contact
-          <br />
-          Information
-          <br />
-          Here
-          <br />
-          <a
-            className="Footer-link Footer-email"
-            href="mailto:gr.permaculture@gmail.com"
-          >
+          <a className="Footer-link Footer-email" href={`mailto:${GR_EMAIL}`}>
             gr.permaculture@gmail.com
           </a>
         </div>

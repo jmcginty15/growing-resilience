@@ -5,7 +5,7 @@
 }
 
 #brand-logo-container {
-  font-family: "Pacifico", cursive;
+  margin: 0;
   color: white;
   transition: 0.15s;
 }
@@ -55,7 +55,12 @@
 
 #Nav {
   background-color: var(--green);
-  padding-right: 40px;
-  padding-left: 40px;
+  padding: 0 40px;
   box-shadow: 0 2px 10px black;
+}
+
+@media (max-width: 767px) {
+  #Nav {
+    padding: 0 20px;
+  }
 }

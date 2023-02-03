@@ -1,0 +1,4 @@
+{
+  "appService.defaultWebAppToDeploy": "/subscriptions/8cce8b75-076f-4388-913f-d711a4cc2a39/AppServices/subscriptions/8cce8b75-076f-4388-913f-d711a4cc2a39/resourceGroups/growing-resilience-rg/providers/Microsoft.Web/sites/growingresilience",
+  "appService.deploySubpath": "."
+}

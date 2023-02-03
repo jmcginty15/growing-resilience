@@ -1,6 +1,6 @@
 import { useState } from "react";
 import About from "../about/About";
-import Guide from "../guide/Guide";
+import Guide from "../guides/Guides";
 import Podcast from "../podcast/Podcast";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";

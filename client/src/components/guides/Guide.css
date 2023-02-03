@@ -1,0 +1,82 @@
+.Guide {
+  margin: 5%;
+}
+
+.Guide-content {
+  background-color: rgba(255, 255, 255, 0.75);
+  color: black;
+  text-align: justify;
+  padding: 5%;
+  font-size: 18pt;
+  line-height: 1.5;
+  box-shadow: 0 2px 10px black;
+}
+
+.Guide-title {
+  font-size: 42pt;
+  text-align: left;
+  margin: 3rem 0;
+}
+
+.Guide-link-container {
+  margin-bottom: 1rem;
+}
+
+.Guide-link {
+  color: black;
+  transition: 0.15s;
+}
+
+.Guide-link:hover {
+  color: var(--gold);
+  transition: 0.15s;
+}
+
+.Guide-p {
+  margin: 2.5rem 0;
+}
+
+.Guide ul,
+.Guide ol {
+  margin-right: 10%;
+}
+
+.Guide-photo {
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  margin-top: 20px;
+}
+
+@media (min-width: 768px) {
+  .Guide-photo {
+    width: 45%;
+    float: right;
+    margin: 0 0 50px 50px;
+  }
+}
+
+@media (max-width: 767px) {
+  .Guide {
+    font-size: 12pt;
+  }
+
+  .Guide-title {
+    font-size: 36pt;
+    margin: 1rem 0 2rem 0;
+  }
+
+  .Guide-content {
+    font-size: 12pt;
+  }
+}
+
+@media (max-width: 300px) {
+  .Guide-title {
+    font-size: 24pt;
+  }
+
+  .Guide-content {
+    font-size: 10pt;
+  }
+}

@@ -13,3 +13,15 @@
   color: var(--gold);
   transition: 0.15s;
 }
+
+@media (max-width: 767px) {
+  .SubscriptionLink {
+    font-size: 12pt;
+  }
+}
+
+@media (max-width: 300px) {
+  .SubscriptionLink {
+    font-size: 10pt;
+  }
+}

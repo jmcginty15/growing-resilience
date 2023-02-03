@@ -33,8 +33,13 @@ function App() {
         <Route exact path="/" element={<Landing />} />
         <Route exact path="/about" element={<Container page="about" />} />
         <Route exact path="/guides" element={<Container page="guides" />} />
+        {/* <Route
+          exact
+          path="/guides/:guide"
+          element={<Container page="guides" />}
+        /> */}
         <Route exact path="/podcast" element={<Container page="podcast" />} />
-        {/* <Route path={"*"} element={<Navigate to="/" />} /> */}
+        <Route path={"*"} element={<Navigate to="/" />} />
       </Routes>
       {/* </CSSTransition>
       </TransitionGroup> */}

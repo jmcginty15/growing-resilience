@@ -1,5 +1,7 @@
 const cleanUpTitle = (title) => {
-  return title.replace(".", "").replace(/\s+/g, " ").trim();
+  title = title.replace(".", "").replace(/\s+/g, " ").trim();
+  if (title[0] !== "#") title = `#${title}`;
+  return title;
 };
 
 const cleanUpCData = (str) => {

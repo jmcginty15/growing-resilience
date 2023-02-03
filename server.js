@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const app = express();
+const guideRoutes = require("./routes/guideRoutes");
 const podcastRoutes = require("./routes/podcastRoutes");
 
 app.use(cors({ origin: "*" }));
@@ -21,9 +22,12 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "./client/build")));
+// app.use("/guide-files", guideRoutes);
 app.use("/episodes", podcastRoutes);
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 });
+
+module.exports = app;

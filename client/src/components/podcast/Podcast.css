@@ -9,6 +9,7 @@
   padding: 5%;
   font-size: 18pt;
   line-height: 1.5;
+  box-shadow: 0 2px 10px black;
 }
 
 .Podcast-title {
@@ -43,20 +44,19 @@
 }
 
 .Podcast-search-form {
-  display: grid;
-  grid-template-columns: 60% 40%;
   margin: 0 auto 2rem 0;
-  padding: 0 0.5rem;
+  padding: 0 1rem;
   border: var(--green) solid 2px;
 }
 
 .Podcast-search-input {
-  margin: 1rem 0.5rem;
+  width: 100%;
+  margin: 1rem 0;
   font-size: 14pt;
 }
 
 .Podcast-search-button {
-  margin: 1rem 0.5rem;
+  margin-bottom: 1rem;
   background-color: #00000000;
   border: var(--green) solid 1px;
   color: var(--green);
@@ -67,6 +67,14 @@
   background-color: var(--green);
   color: white;
   transition: 0.15s;
+}
+
+.Podcast-search-button-left {
+  margin-right: 0.5rem;
+}
+
+.Podcast-search-button-right {
+  margin-left: 0.5rem;
 }
 
 .Podcast-search-button-container {
@@ -87,4 +95,64 @@
 .Podcast-no-episodes {
   width: 100%;
   text-align: center;
+}
+
+.Podcast-footer {
+  width: 100%;
+  margin-top: 5%;
+}
+
+@media (max-width: 950px) {
+  .Podcast-search-input,
+  .Podcast-search-button {
+    font-size: 12pt;
+  }
+}
+
+@media (max-width: 767px) {
+  .Podcast-header {
+    margin: 2rem 0;
+  }
+
+  .Podcast-search-input,
+  .Podcast-search-button {
+    font-size: 12pt;
+  }
+
+  .Podcast-header-content {
+    grid-template-columns: 50% 50%;
+    font-size: 12pt;
+  }
+
+  .Podcast-content {
+    grid-template-columns: 100%;
+  }
+
+  .Podcast-content-episodes {
+    margin-right: 0;
+  }
+
+  .Podcast-search-form {
+    grid-template-columns: 100%;
+    margin-top: 2rem;
+  }
+
+  .Podcast-search-button {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 300px) {
+  .Podcast-search-form {
+    grid-template-columns: 100%;
+  }
+
+  .Podcast-search-button {
+    margin-top: 0;
+  }
+
+  .Podcast-search-input,
+  .Podcast-search-button {
+    font-size: 10pt;
+  }
 }

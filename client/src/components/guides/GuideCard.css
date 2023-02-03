@@ -1,0 +1,34 @@
+.GuideCard {
+  margin: 4rem 0;
+}
+
+.GuideCard-text {
+  font-size: 14pt;
+}
+
+.GuideCard-link {
+  color: black;
+  transition: 0.15s;
+}
+
+.GuideCard-link:hover {
+  color: var(--gold);
+  transition: 0.15s;
+}
+
+.GuideCard-title {
+  text-decoration: underline;
+  transition: 0.15s;
+}
+
+.GuideCard-title:hover {
+  cursor: pointer;
+  color: var(--gold);
+  transition: 0.15s;
+}
+
+@media (max-width: 300px) {
+  .GuideCard {
+    margin: 3rem 0;
+  }
+}

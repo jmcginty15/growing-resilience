@@ -44,3 +44,16 @@
 .PageNavigator-middle {
   text-align: center;
 }
+
+@media (max-width: 767px) {
+  .PageNavigator {
+    font-size: 10pt;
+  }
+}
+
+@media (max-width: 300px) {
+  .PageNavigator {
+    font-size: 8pt;
+    grid-template-columns: 12% 12% 52% 12% 12%;
+  }
+}

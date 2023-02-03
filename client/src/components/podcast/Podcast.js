@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import { BASE_URL } from "../../config";
-import logo from "../../assets/podcast-logo.jpg";
-import "./Podcast.css";
-import SubscriptionLink from "./SubscriptionLink";
 import axios from "axios";
+import SubscriptionLink from "./SubscriptionLink";
 import PodcastPlayer from "./PodcastPlayer";
-import { paginateEpisodes } from "../../utils";
 import PageNavigator from "./PageNavigator";
+import { paginateEpisodes } from "../../utils";
+import logo from "../../assets/podcast-logo.jpg";
+import footer from "../../assets/tomatoes-compressed.jpg";
+import "./Podcast.css";
 
 const subscriptionLinks = [
   {
@@ -155,28 +156,26 @@ const mockEpisodes = [
 ];
 
 const getEpisodes = async (searchTerms = null) => {
-  // let url = `${BASE_URL}/episodes`;
-  // if (searchTerms) {
-  //   const terms = searchTerms.split(" ");
-  //   searchTerms = [];
-  //   for (let term of terms) if (term !== "") searchTerms.push(term);
-  //   url += `?searchTerms=${encodeURIComponent(searchTerms.join(" "))}`;
-  // }
-  // const res = await axios.get(url);
-  // return res.data;
+  let url = `${BASE_URL}/episodes`;
+  if (searchTerms) {
+    const terms = searchTerms.split(" ");
+    searchTerms = [];
+    for (let term of terms) if (term !== "") searchTerms.push(term);
+    url += `?searchTerms=${encodeURIComponent(searchTerms.join(" "))}`;
+  }
+  const res = await axios.get(url);
+  return res.data;
 
-  return mockEpisodes;
+  // return mockEpisodes;
 };
 
-const Podcast = () => {
+const Podcast = ({ photoRight }) => {
   const [episodes, setEpisodes] = useState(null);
   const [paginatedEpisodes, setPaginatedEpisodes] = useState(null);
   const [currentPage, setCurrentPage] = useState(0);
   const [searchTerms, setSearchTerms] = useState("");
   const [searching, setSearching] = useState(false);
   const handleChange = (evt) => setSearchTerms(evt.target.value);
-
-  console.log(episodes);
 
   useEffect(() => {
     getEpisodes().then((data) => {
@@ -256,6 +255,13 @@ const Podcast = () => {
       <div className="Podcast-content-main">
         <div className="Podcast-content">
           <div className="Podcast-content-episodes">
+            {!photoRight && (
+              <img
+                className="Podcast-photo"
+                src={logo}
+                alt="growing-resilience-podcast"
+              />
+            )}
             <form className="Podcast-search-form" onSubmit={handleSubmit}>
               <input
                 className="Podcast-search-input"
@@ -269,11 +275,14 @@ const Podcast = () => {
                 <div className="Podcast-search-indicator">Searching...</div>
               ) : (
                 <div className="Podcast-search-button-container">
-                  <button className="Podcast-search-button" type="submit">
+                  <button
+                    className="Podcast-search-button Podcast-search-button-left"
+                    type="submit"
+                  >
                     Search
                   </button>
                   <button
-                    className="Podcast-search-button"
+                    className="Podcast-search-button Podcast-search-button-right"
                     type="button"
                     onClick={handleClear}
                   >
@@ -322,8 +331,15 @@ const Podcast = () => {
               </div>
             )}
           </div>
-          <img className="Podcast-photo" src={logo} alt="peppers" />
+          {photoRight && (
+            <img
+              className="Podcast-photo"
+              src={logo}
+              alt="growing-resilience-podcast"
+            />
+          )}
         </div>
+        <img className="Podcast-footer" src={footer} alt="tomatoes" />
       </div>
     </div>
   );

@@ -108,3 +108,13 @@ export const paginateEpisodes = (episodes) => {
 
   return paginatedEpisodes;
 };
+
+export const getEmailBody = (guideTitle) => {
+  return encodeURIComponent(
+    `Hi Todd,\n\nI'd like to request ${guideTitle} as a PDF.\n\nThanks!`
+  );
+};
+
+export const getEmailSubject = (guideTitle) => {
+  return encodeURIComponent(`Request for ${guideTitle}`);
+};

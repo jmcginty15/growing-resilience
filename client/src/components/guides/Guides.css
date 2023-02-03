@@ -1,0 +1,77 @@
+.Guides {
+  margin: 5%;
+}
+
+.Guides-content {
+  background-color: rgba(255, 255, 255, 0.75);
+  color: black;
+  text-align: justify;
+  padding: 5%;
+  font-size: 18pt;
+  line-height: 1.5;
+  box-shadow: 0 2px 10px black;
+}
+
+.Guides-content-main {
+  display: grid;
+  grid-template-columns: 65% 35%;
+}
+
+.Guides-title {
+  font-size: 42pt;
+  text-align: left;
+  margin: 3rem 0;
+}
+
+.Guides-photo {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  object-position: center;
+}
+
+.Guides-content-guides {
+  margin-right: 50px;
+}
+
+.Guides-footer {
+  width: 100%;
+  margin-top: 5%;
+}
+
+@media (max-width: 767px) {
+  .Guides {
+    font-size: 12pt;
+  }
+
+  .Guides-title {
+    font-size: 36pt;
+    margin: 1rem 0 2rem 0;
+  }
+
+  .Guides-content {
+    font-size: 12pt;
+  }
+
+  .Guides-content-main {
+    grid-template-columns: 100%;
+  }
+
+  .Guides-more {
+    margin-bottom: 2rem;
+  }
+
+  .Guides-content-guides {
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 300px) {
+  .Guides-title {
+    font-size: 24pt;
+  }
+
+  .Guides-content {
+    font-size: 10pt;
+  }
+}
