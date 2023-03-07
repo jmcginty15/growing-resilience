@@ -9,6 +9,12 @@ const guides = [
     description: `No rototiller needed! A silage tarp, a broadfork, some hard work and patience will get you on your way. With extra effort, you can get a small portion of your long-term garden growing now.`,
     fileName: "/quick-start-garden-guide",
   },
+  {
+    title: "Guide to Woody Perennial Placement, Preparation, and Planting",
+    description:
+      "We all want to get our perennials planted as soon as possible because they may take years to produce a crop. The catch is that you need to know your land well to place these long lived plants in the best location. Be as patient as you can be in choosing a spot, and only plant when you are as reasonably sure as you can be that you have made a sound decision.",
+    fileName: "/guide-to-woody-perennial-placement-preparation-and-planting",
+  },
 ];
 
 const Guides = () => {
