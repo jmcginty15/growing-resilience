@@ -10,10 +10,10 @@ const guides = [
     fileName: "/quick-start-garden-guide",
   },
   {
-    title: "Guide to Woody Perennial Placement, Preparation, and Planting",
+    title: "Woody Perennial Placement, Preparation, and Planting Guide",
     description:
-      "We all want to get our perennials planted as soon as possible because they may take years to produce a crop. The catch is that you need to know your land well to place these long lived plants in the best location. Be as patient as you can be in choosing a spot, and only plant when you are as reasonably sure as you can be that you have made a sound decision.",
-    fileName: "/guide-to-woody-perennial-placement-preparation-and-planting",
+      'As with all things growing plants, you ask 100 people how to do "x", and you will get "100x" answers. Below is my technique that I use, and have done so for a number of years with great success.',
+    fileName: "/woody-perennial-placement-preparation-and-planting-guide",
   },
 ];
 
