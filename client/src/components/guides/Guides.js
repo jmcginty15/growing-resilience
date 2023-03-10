@@ -12,7 +12,7 @@ const guides = [
   {
     title: "Woody Perennial Placement, Preparation, and Planting Guide",
     description:
-      'As with all things growing plants, you ask 100 people how to do "x", and you will get "100x" answers. Below is my technique that I use, and have done so for a number of years with great success.',
+      'As with all things growing plants, you ask 100 people how to do "x", and you will get "100x" answers. This is my technique that I use, and have done so for a number of years with great success.',
     fileName: "/woody-perennial-placement-preparation-and-planting-guide",
   },
 ];
